@@ -1,6 +1,6 @@
 # CommerceIQ: End-to-End E-Commerce Analytics Platform
 
-CommerceIQ is a portfolio-quality analytics project built around the public Brazilian Olist E-Commerce dataset. It demonstrates an end-to-end workflow: source-data auditing, cleaning, relational modeling, PostgreSQL analysis, KPI development, visualization, and business communication.
+CommerceIQ is a portfolio-quality analytics project built around the public Brazilian Olist E-Commerce dataset. It demonstrates an end-to-end workflow: source-data auditing, cleaning, relational modeling, PostgreSQL analysis, KPI development, Power BI dashboarding, and business communication.
 
 The project is intentionally developed in phases. Findings will be added only after they are calculated from the source files; this repository does not contain invented statistics.
 
@@ -29,7 +29,7 @@ The CSV files are not committed to Git. Download them separately and place them 
 - Python, pandas, and NumPy for data preparation and analysis
 - Jupyter for reproducible analytical notebooks
 - PostgreSQL and SQLAlchemy for relational storage and querying
-- Matplotlib and Plotly for visualization
+- Matplotlib, Plotly, and Power BI for visualization and stakeholder reporting
 - pytest for automated testing
 - Git and GitHub for version control and project documentation
 
@@ -70,12 +70,15 @@ commerceiq-analytics/
 │   ├── kpi_queries.sql
 │   └── advanced_analysis.sql
 ├── dashboard/
-├── reports/
-├── images/
+│   ├── commerceiq_dashboard.pbix
+│   ├── data/                   # Dashboard-ready Excel source
+│   └── exports/                # Static dashboard export
+├── reports/                    # Reproducible generated outputs
+├── images/                     # Dashboard page previews
 └── tests/
 ```
 
-## Planned Analytical Questions
+## Analytical Questions
 
 1. How do order volume and revenue change over time?
 2. Which product categories, sellers, and regions drive marketplace performance?
@@ -85,7 +88,7 @@ commerceiq-analytics/
 6. Which sellers combine strong sales with reliable fulfillment and customer satisfaction?
 7. Are cancellations or low review scores concentrated in particular operational segments?
 
-## Planned KPIs
+## KPI Framework
 
 - gross merchandise value (GMV)
 - total orders and delivered orders
@@ -98,7 +101,43 @@ commerceiq-analytics/
 - active sellers and seller-level GMV
 - category and geographic revenue contribution
 
-Metric definitions, filters, and grain will be documented before results are published.
+Metric definitions, filters, grain, and interpretation limits are documented in
+[`docs/kpi_definitions.md`](docs/kpi_definitions.md).
+
+## Dashboard
+
+The stakeholder dashboard is available as
+[`dashboard/commerceiq_dashboard.pbix`](dashboard/commerceiq_dashboard.pbix).
+It contains three report pages:
+
+1. **Executive Overview** - delivered GMV, delivered orders, average order value,
+   on-time delivery, and monthly GMV trend.
+2. **Operations & Experience** - the relationship between delivery timing and
+   low reviews, plus the order-status distribution.
+3. **Customers & Markets** - delivered GMV by customer state and payment value
+   by payment method.
+
+![CommerceIQ executive dashboard](images/commerceiq-dashboard-1.png)
+
+The source workbook, static PDF, page previews, metric semantics, and refresh
+instructions are described in [`dashboard/README.md`](dashboard/README.md).
+
+## Selected Findings
+
+- Delivered item GMV is **R$13.22 million** across **96,478 delivered orders**,
+  with delivered AOV of **R$137.04**.
+- **93.23%** of comparable delivered orders arrived on or before the estimated
+  calendar date.
+- The low-review rate rises from **9.16%** for orders delivered at least two
+  days early to **79.18%** for orders delivered eight or more days late.
+- São Paulo contributes **38.33%** of delivered GMV; São Paulo, Rio de Janeiro,
+  and Minas Gerais together contribute **63.38%**.
+- Credit cards represent **78.34%** of payment value, while the observed
+  repeat-customer rate is **3.00%**.
+
+See [`docs/executive_summary.md`](docs/executive_summary.md) for the concise
+stakeholder narrative and [`docs/analysis_findings.md`](docs/analysis_findings.md)
+for supporting interpretation and recommendations.
 
 ## Installation
 
@@ -203,21 +242,18 @@ reproducible CSVs plus a checksum manifest to `reports/analytics/`. Open
 
 ## Current Project Status
 
-**Phase 4 — documented KPIs and exploratory business analysis.**
+**Phase 5 - end-to-end analytics platform and stakeholder dashboard complete.**
 
-The repository foundation, source audit, relational contracts, cleaning
+The repository includes the source audit, relational contracts, tested cleaning
 pipeline, lineage manifest, normalized PostgreSQL database, transactional
 loader, integrity SQL, documented KPI queries, reproducible analytical extracts,
-exploratory notebook, and evidence-based business findings are in place. An
-interactive stakeholder dashboard is planned next.
+exploratory notebook, evidence-based business findings, dashboard-ready source
+workbook, three-page Power BI report, and verified static previews.
 
 ## Future Improvements
 
-- define and test a reproducible cleaning pipeline
-- create a normalized PostgreSQL schema with explicit constraints
-- add referential-integrity and business-rule checks
-- develop exploratory analysis and documented KPI queries
-- build an interactive stakeholder dashboard
-- add automated unit and integration tests
-- publish an executive summary with evidence-based recommendations
-- add continuous integration for formatting and test execution
+- add a GitHub Actions workflow for automated tests and linting
+- automate dashboard refresh against a scheduled PostgreSQL extract
+- add contribution-margin analysis if product cost data becomes available
+- publish the Power BI report through a governed workspace when sharing is needed
+- evaluate new customer cohorts as additional observation periods become available
