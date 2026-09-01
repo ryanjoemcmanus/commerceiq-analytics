@@ -8,8 +8,9 @@ CSV files.
 ## Files
 
 - `commerceiq_dashboard.pbix` - interactive three-page Power BI Desktop report.
-- `data/commerceiq-dashboard-source.xlsx` - portable dashboard source workbook
-  containing the ten validated analytical extracts.
+- `commerceiq-theme.json` - reusable CommerceIQ color and typography theme.
+- `data/commerceiq-dashboard-source.xlsx` - version-controlled dashboard source
+  workbook containing the ten validated analytical extracts.
 - `exports/commerceiq_dashboard.pdf` - static three-page portfolio export.
 - `../images/commerceiq-dashboard-*.png` - rendered page previews used by the
   repository documentation.
@@ -57,10 +58,13 @@ The full definitions and interpretation limits are in
 1. Run the audit, cleaning, database load, and analytics commands from the main
    README when rebuilding the project from raw data.
 2. Open `commerceiq_dashboard.pbix` in Power BI Desktop.
-3. If the portable source must be rebuilt, replace the workbook tables using the
+3. If Power BI requests a source location, select the repository copy at
+   `dashboard/data/commerceiq-dashboard-source.xlsx` and apply the change to all
+   workbook queries.
+4. If the source workbook must be rebuilt, replace its tables using the
    validated CSVs generated in `reports/analytics/`, preserving table names and
    column types.
-4. Select **Refresh** in Power BI and confirm that every page renders without
+5. Select **Refresh** in Power BI and confirm that every page renders without
    errors before saving or exporting.
 
 The dashboard source tables are intentionally pre-aggregated at different

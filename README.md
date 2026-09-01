@@ -46,6 +46,7 @@ commerceiq-analytics/
 ├── docs/
 │   ├── cleaning_rules.md
 │   ├── analysis_findings.md
+│   ├── conclusion.md
 │   ├── database_setup.md
 │   ├── kpi_definitions.md
 │   └── data_model.md
@@ -137,7 +138,8 @@ instructions are described in [`dashboard/README.md`](dashboard/README.md).
 
 See [`docs/executive_summary.md`](docs/executive_summary.md) for the concise
 stakeholder narrative and [`docs/analysis_findings.md`](docs/analysis_findings.md)
-for supporting interpretation and recommendations.
+for supporting interpretation. The final decision-oriented synthesis is in
+[`docs/conclusion.md`](docs/conclusion.md).
 
 ## Installation
 
