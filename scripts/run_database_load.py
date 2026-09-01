@@ -3,20 +3,19 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
 import json
-from pathlib import Path
 import sys
-
+from datetime import UTC, datetime
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.config import (  # noqa: E402
-    DatabaseSettings,
     PROCESSED_DATA_DIR,
     REPORTS_DIR,
+    DatabaseSettings,
 )
 from src.database_loader import (  # noqa: E402
     create_database_engine,
@@ -51,7 +50,7 @@ def _write_reports(load_counts, quality_checks) -> Path:
     load_counts.to_csv(report_directory / "database_load_counts.csv", index=False)
     quality_checks.to_csv(report_directory / "database_quality_checks.csv", index=False)
     manifest = {
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "loaded_table_count": int(len(load_counts)),
         "quality_check_count": int(len(quality_checks)),
         "failed_quality_check_count": int(quality_checks["status"].eq("failed").sum()),

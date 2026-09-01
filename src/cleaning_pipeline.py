@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import hashlib
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +24,6 @@ from src.relational_quality import (
     build_schema_check_table,
     load_source_tables,
 )
-
 
 MANIFEST_FILE_NAME = "cleaning_manifest.json"
 VALIDATION_REPORT_FILES = {
@@ -217,7 +216,7 @@ def run_cleaning_pipeline(
         )
 
     manifest: dict[str, Any] = {
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "raw_data_directory": str(raw_directory),
         "processed_data_directory": str(processed_directory),
         "report_directory": str(report_directory),

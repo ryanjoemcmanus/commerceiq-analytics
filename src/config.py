@@ -9,7 +9,6 @@ from urllib.parse import quote_plus
 
 from dotenv import load_dotenv
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
@@ -30,7 +29,7 @@ class DatabaseSettings:
     password: str
 
     @classmethod
-    def from_environment(cls) -> "DatabaseSettings":
+    def from_environment(cls) -> DatabaseSettings:
         """Build validated database settings from environment variables.
 
         Raises:

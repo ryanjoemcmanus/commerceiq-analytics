@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import pandas as pd
 
@@ -16,7 +17,6 @@ from src.data_cleaning import (
     discover_csv_files,
 )
 from src.relational_quality import build_relational_quality_reports
-
 
 REPORT_FILE_NAMES = {
     "table_overview": "table_overview.csv",
@@ -207,7 +207,7 @@ def run_data_quality_audit(
         table.to_csv(output_directory / REPORT_FILE_NAMES[report_name], index=False)
 
     summary: dict[str, Any] = {
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "source_directory": str(raw_directory),
         "report_directory": str(output_directory),
         "discovered_file_count": len(source_files),

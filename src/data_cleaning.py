@@ -6,14 +6,14 @@ changed or overwritten.
 
 from __future__ import annotations
 
+import re
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 from pathlib import Path
-import re
-from typing import Any, Iterable
+from typing import Any
 
 import pandas as pd
 from pandas.api.types import is_object_dtype, is_string_dtype
-
 
 TIMESTAMP_NAME_PATTERN = re.compile(r"(?:date|time|timestamp|_at$)", re.IGNORECASE)
 PRIMARY_KEY_NAME_PATTERN = re.compile(r"(?:^id$|_id$)", re.IGNORECASE)

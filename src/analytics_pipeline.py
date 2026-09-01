@@ -2,16 +2,15 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import hashlib
 import json
-from pathlib import Path
 import re
-from typing import Iterable
+from collections.abc import Iterable
+from datetime import UTC, datetime
+from pathlib import Path
 
 import pandas as pd
 from sqlalchemy import Engine, text
-
 
 QUERY_NAME_PATTERN = re.compile(r"^--\s*name:\s*([a-z][a-z0-9_]*)\s*$", re.MULTILINE)
 
@@ -211,7 +210,7 @@ def run_analytics_pipeline(
             )
 
     manifest: dict[str, object] = {
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "query_count": len(queries),
         "sql_files": [
             {"path": str(path), "sha256": _sha256(path)} for path in resolved_paths

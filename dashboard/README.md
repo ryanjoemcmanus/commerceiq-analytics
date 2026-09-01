@@ -22,7 +22,8 @@ CSV files.
 Provides the headline marketplace view: delivered item GMV, delivered orders,
 delivered AOV, on-time delivery rate, and the monthly delivered-GMV trend. The
 month field is typed as a Power BI Date so the horizontal axis displays calendar
-labels rather than Excel serial values.
+labels rather than Excel serial values. An **Order Month** range control lets a
+stakeholder focus the trend on a specific reporting window.
 
 ### Operations & Experience
 
@@ -36,7 +37,8 @@ late deliveries and proactively manage delivery exceptions.
 
 Shows delivered GMV by customer state and payment value by payment method. It
 highlights the commercial concentration in Brazil's largest states and the
-importance of credit-card and installment behavior.
+importance of credit-card and installment behavior. A **Customer State**
+dropdown supports focused market comparisons without crowding the page.
 
 ![Customers and markets dashboard](../images/commerceiq-dashboard-3.png)
 
@@ -73,5 +75,6 @@ explicitly required and its one-to-many cardinality has been validated.
 
 ## Portfolio Review
 
-The PDF export provides a no-installation preview. Use the PBIX for tooltips,
-cross-highlighting, sorting, and deeper inspection in Power BI Desktop.
+The PDF export provides a no-installation preview. Use the PBIX for date and
+state filtering, tooltips, cross-highlighting, sorting, and deeper inspection
+in Power BI Desktop.

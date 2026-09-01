@@ -2,16 +2,15 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.analytics_pipeline import run_analytics_pipeline  # noqa: E402
-from src.config import DatabaseSettings, REPORTS_DIR  # noqa: E402
+from src.config import REPORTS_DIR, DatabaseSettings  # noqa: E402
 from src.database_loader import create_database_engine  # noqa: E402
 
 

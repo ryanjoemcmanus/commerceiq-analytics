@@ -46,6 +46,9 @@ data/processed/*
 reports/*
 !reports/.gitkeep
 !reports/README.md
+!reports/notebooks/
+reports/notebooks/*
+!reports/notebooks/*.html
 output/
 outputs/
 tmp/

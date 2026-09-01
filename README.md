@@ -1,261 +1,220 @@
 # CommerceIQ: End-to-End E-Commerce Analytics Platform
 
-CommerceIQ is a portfolio-quality analytics project built around the public Brazilian Olist E-Commerce dataset. It demonstrates an end-to-end workflow: source-data auditing, cleaning, relational modeling, PostgreSQL analysis, KPI development, Power BI dashboarding, and business communication.
+[![CommerceIQ CI](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-The project is intentionally developed in phases. Findings will be added only after they are calculated from the source files; this repository does not contain invented statistics.
+CommerceIQ is a portfolio-quality analytics platform built from the public
+Brazilian Olist e-commerce dataset. It turns nine related CSV files into a
+tested PostgreSQL model, reproducible SQL analyses, Python exploratory work,
+and a stakeholder-facing Power BI dashboard.
 
-## Business Problem
-
-An e-commerce marketplace needs a reliable view of commercial performance and customer experience across customers, orders, sellers, products, payments, reviews, and delivery operations. CommerceIQ will turn these related operational datasets into consistent analytical tables and decision-ready metrics.
-
-The eventual analysis will help stakeholders understand revenue performance, order trends, delivery reliability, customer satisfaction, product and category performance, seller performance, and geographic patterns.
-
-## Dataset Description
-
-The [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) contains anonymized marketplace transactions from Brazil across multiple related CSV files. The source includes data about:
-
-- customers and customer locations
-- orders and order-status timestamps
-- order items, products, and sellers
-- payments and payment installments
-- customer reviews
-- product-category translations
-- geolocation reference data
-
-The CSV files are not committed to Git. Download them separately and place them in `data/raw/` without renaming or modifying them.
-
-## Technology Stack
-
-- Python, pandas, and NumPy for data preparation and analysis
-- Jupyter for reproducible analytical notebooks
-- PostgreSQL and SQLAlchemy for relational storage and querying
-- Matplotlib, Plotly, and Power BI for visualization and stakeholder reporting
-- pytest for automated testing
-- Git and GitHub for version control and project documentation
-
-## Repository Structure
-
-```text
-commerceiq-analytics/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── data/
-│   ├── raw/                    # Original CSV files (not tracked)
-│   └── processed/              # Reproducible cleaned outputs (not tracked)
-├── docs/
-│   ├── cleaning_rules.md
-│   ├── analysis_findings.md
-│   ├── conclusion.md
-│   ├── database_setup.md
-│   ├── kpi_definitions.md
-│   └── data_model.md
-├── notebooks/
-│   ├── 01_data_quality_audit.ipynb
-│   └── 02_exploratory_analysis.ipynb
-├── scripts/
-│   ├── run_data_cleaning.py
-│   ├── run_analytics.py
-│   ├── run_database_load.py
-│   └── run_data_quality_audit.py
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── data_cleaning.py
-│   ├── data_quality.py
-│   ├── feature_engineering.py
-│   └── database_loader.py
-├── sql/
-│   ├── schema.sql
-│   ├── data_quality_checks.sql
-│   ├── kpi_queries.sql
-│   └── advanced_analysis.sql
-├── dashboard/
-│   ├── commerceiq_dashboard.pbix
-│   ├── data/                   # Dashboard-ready Excel source
-│   └── exports/                # Static dashboard export
-├── reports/                    # Reproducible generated outputs
-├── images/                     # Dashboard page previews
-└── tests/
-```
-
-## Analytical Questions
-
-1. How do order volume and revenue change over time?
-2. Which product categories, sellers, and regions drive marketplace performance?
-3. Where do delivery delays occur, and how do they affect review scores?
-4. How do payment methods and installment behavior vary across orders?
-5. What share of customers make repeat purchases under a stable customer definition?
-6. Which sellers combine strong sales with reliable fulfillment and customer satisfaction?
-7. Are cancellations or low review scores concentrated in particular operational segments?
-
-## KPI Framework
-
-- gross merchandise value (GMV)
-- total orders and delivered orders
-- average order value (AOV)
-- cancellation rate
-- on-time delivery rate
-- average delivery time and average delivery delay
-- average review score and low-review rate
-- repeat-customer rate
-- active sellers and seller-level GMV
-- category and geographic revenue contribution
-
-Metric definitions, filters, grain, and interpretation limits are documented in
-[`docs/kpi_definitions.md`](docs/kpi_definitions.md).
-
-## Dashboard
-
-The stakeholder dashboard is available as
-[`dashboard/commerceiq_dashboard.pbix`](dashboard/commerceiq_dashboard.pbix).
-It contains three report pages:
-
-1. **Executive Overview** - delivered GMV, delivered orders, average order value,
-   on-time delivery, and monthly GMV trend.
-2. **Operations & Experience** - the relationship between delivery timing and
-   low reviews, plus the order-status distribution.
-3. **Customers & Markets** - delivered GMV by customer state and payment value
-   by payment method.
+The project demonstrates the complete analytical workflow: **data quality,
+cleaning, relational modeling, SQL, KPI design, visualization, and business
+communication**.
 
 ![CommerceIQ executive dashboard](images/commerceiq-dashboard-1.png)
 
-The source workbook, static PDF, page previews, metric semantics, and refresh
-instructions are described in [`dashboard/README.md`](dashboard/README.md).
+## Business question
 
-## Selected Findings
+How can an e-commerce marketplace protect customer experience while growing,
+focus operational effort where commercial value is concentrated, and convert
+more first-time buyers into repeat customers?
 
-- Delivered item GMV is **R$13.22 million** across **96,478 delivered orders**,
-  with delivered AOV of **R$137.04**.
-- **93.23%** of comparable delivered orders arrived on or before the estimated
-  calendar date.
-- The low-review rate rises from **9.16%** for orders delivered at least two
-  days early to **79.18%** for orders delivered eight or more days late.
-- São Paulo contributes **38.33%** of delivered GMV; São Paulo, Rio de Janeiro,
-  and Minas Gerais together contribute **63.38%**.
-- Credit cards represent **78.34%** of payment value, while the observed
-  repeat-customer rate is **3.00%**.
+## Executive findings
 
-See [`docs/executive_summary.md`](docs/executive_summary.md) for the concise
-stakeholder narrative and [`docs/analysis_findings.md`](docs/analysis_findings.md)
-for supporting interpretation. The final decision-oriented synthesis is in
-[`docs/conclusion.md`](docs/conclusion.md).
+| Finding | Observed result | Business implication |
+|---|---:|---|
+| Delivered item GMV | **R$13.22M** across **96,478 delivered orders** | Growth should be evaluated with service quality, not volume alone. |
+| Delivery reliability | **93.23%** on time among comparable delivered orders | The overall result is strong, but late-order exceptions remain material. |
+| Late delivery and reviews | Low-review rate rises from **9.16%** when 2+ days early to **79.18%** when 8+ days late | Delivery exception prevention is the clearest customer-experience lever. |
+| Geographic concentration | SP, RJ, and MG contribute **63.38%** of delivered GMV | Operational monitoring should begin in the highest-value states. |
+| Customer retention | Observed repeat-customer rate is **3.00%** | Structured post-purchase and service-recovery experiments are the largest visible growth opportunity. |
+| Payment mix | Credit cards represent **78.34%** of payment value | Conversion and cash-flow analysis should retain payment method and installment detail. |
 
-## Installation
+These results describe the finite historical Olist observation window. They are
+associations and descriptive findings, not causal estimates or live-company
+forecasts.
 
-From PowerShell, run:
+## Deliverables
+
+- [Interactive Power BI report](dashboard/commerceiq_dashboard.pbix)
+- [Three-page stakeholder PDF](dashboard/exports/commerceiq_dashboard.pdf)
+- [Executive summary](docs/executive_summary.md)
+- [Decision-oriented conclusion](docs/conclusion.md)
+- [Complete findings](docs/analysis_findings.md)
+- [Executed data-quality notebook](notebooks/01_data_quality_audit.ipynb)
+- [Executed exploratory-analysis notebook](notebooks/02_exploratory_analysis.ipynb)
+- [Standalone notebook exports](reports/notebooks/)
+- [KPI definitions](docs/kpi_definitions.md)
+- [Architecture and ERD](docs/architecture.md)
+- [Interview presentation](presentation/commerceiq-interview-presentation.pptx)
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Olist CSVs] --> B[Python quality audit]
+    B --> C[Validated cleaning]
+    C --> D[(PostgreSQL)]
+    D --> E[Named SQL analyses]
+    E --> F[Versioned extracts]
+    F --> G[Python EDA]
+    F --> H[Power BI]
+```
+
+Raw files remain immutable. Python owns audit and cleaning behavior, PostgreSQL
+owns the normalized analytical model, SQL owns metric semantics, and the
+presentation layers consume validated extracts. See
+[docs/architecture.md](docs/architecture.md) for the full entity-relationship
+diagram and grain safeguards.
+
+## Power BI dashboard
+
+| Executive Overview | Operations & Experience | Customers & Markets |
+|---|---|---|
+| ![Executive overview](images/commerceiq-dashboard-1.png) | ![Operations and experience](images/commerceiq-dashboard-2.png) | ![Customers and markets](images/commerceiq-dashboard-3.png) |
+
+The report provides headline KPIs, the monthly GMV trend, delivery-timing and
+review behavior, order fulfillment status, state concentration, and payment
+mix. Business-language labels, cross-highlighting, tooltips, an Order Month
+range control, and a Customer State selector support guided exploration.
+
+Metric definitions and refresh instructions are documented in
+[dashboard/README.md](dashboard/README.md).
+
+## Technology stack
+
+| Layer | Tools |
+|---|---|
+| Data processing | Python, pandas, NumPy, pathlib |
+| Data quality | Reusable contracts, relational checks, pytest |
+| Database | PostgreSQL 18, SQLAlchemy, psycopg |
+| Analysis | SQL, pandas, Plotly, Jupyter |
+| Dashboard | Power BI Desktop, DAX, Excel analytical extracts |
+| Engineering | Git, GitHub Actions, Ruff |
+
+## Repository structure
+
+```text
+commerceiq-analytics/
+├── .github/workflows/       # Automated linting and tests
+├── dashboard/               # PBIX, theme, source workbook, PDF export
+├── data/                    # Ignored raw and processed data locations
+├── docs/                    # Model, KPI, findings, and business narrative
+├── images/                  # Verified dashboard previews
+├── notebooks/               # Executed audit and exploratory notebooks
+├── presentation/            # Interview-ready project presentation
+├── reports/                 # Reproducible quality and analytical evidence
+├── scripts/                 # Command-line pipeline entry points
+├── sql/                     # Schema, integrity checks, KPIs, advanced analysis
+├── src/                     # Reusable application and validation logic
+└── tests/                   # Automated unit and pipeline tests
+```
+
+## Dataset
+
+Download the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce),
+extract it anywhere below `data/raw/`, and leave the original files unchanged.
+Nested extraction folders are supported.
+
+The expected source domain includes customers, orders, items, payments,
+reviews, products, sellers, geolocation, and product-category translations.
+Downloaded data is intentionally excluded from Git.
+
+## Quick start
+
+From PowerShell:
 
 ```powershell
-cd "C:\path\to\commerceiq-analytics"
+git clone https://github.com/ryanjoemcmanus/commerceiq-analytics.git
+cd commerceiq-analytics
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python -m jupyter lab
+python -m pip install -r requirements-dev.txt
+Copy-Item .env.example .env
 ```
 
-Copy `.env.example` to `.env` only when database connectivity is introduced. Never commit `.env` or credentials.
+Configure local PostgreSQL credentials in `.env`; never commit that file.
+Database setup instructions are in [docs/database_setup.md](docs/database_setup.md).
 
-## Running the Data-Quality Audit
+## Rebuild the project
 
-The audit is a command-line pipeline rather than notebook-only logic. From the
-repository root, run:
-
-```powershell
-python scripts\run_data_quality_audit.py
-```
-
-The pipeline recursively discovers CSV files below `data/raw`, audits them
-without modifying the source data, and writes the following generated files to
-`reports/data_quality/`:
-
-- `table_overview.csv` — row counts, column counts, duplicates, and key candidates
-- `column_quality.csv` — inferred types and missingness for every column
-- `timestamp_issues.csv` — parse results for timestamp-like columns
-- `issue_register.csv` — consolidated warnings and load failures
-- `schema_checks.csv` — expected versus observed source columns
-- `key_checks.csv` — null and duplicate checks for declared keys
-- `relationship_checks.csv` — foreign-key coverage and orphan counts
-- `business_rule_checks.csv` — allowed values and timestamp-order checks
-- `audit_summary.json` — structured run metadata and full table-level results
-
-After the pipeline completes, open `notebooks/01_data_quality_audit.ipynb` to
-review and communicate the findings. The notebook reads these generated reports
-and does not contain the audit engine.
-
-Optional path overrides are available for automated or alternate local runs:
-
-```powershell
-python scripts\run_data_quality_audit.py --raw-data-dir data\raw --report-dir reports\data_quality
-```
-
-Run the automated tests with:
-
-```powershell
-python -m pytest -q
-```
-
-## Running the Cleaning Pipeline
-
-Run the quality audit first, then generate processed analytical tables:
+Run each stage from the repository root:
 
 ```powershell
 python scripts\run_data_quality_audit.py
 python scripts\run_data_cleaning.py
-```
-
-The cleaning command writes validated tables to `data/processed/` and creates a
-lineage manifest plus post-cleaning checks in `reports/data_cleaning/`. Raw CSVs
-remain unchanged. See `docs/cleaning_rules.md` for every transformation and the
-rationale behind it.
-
-## Loading PostgreSQL
-
-Validate the processed files and database contracts without connecting:
-
-```powershell
-python scripts\run_database_load.py --dry-run
-```
-
-After PostgreSQL is installed, the `commerceiq` database exists, and local `.env`
-credentials are configured, run:
-
-```powershell
 python scripts\run_database_load.py
-```
-
-The loader is transactional and idempotent: it creates the managed schema,
-reloads tables in dependency order, verifies row counts, and executes database
-integrity checks. See `docs/database_setup.md` for setup and safety details.
-
-## Running the Analytics
-
-After the database load, generate all documented KPI and advanced-analysis
-extracts:
-
-```powershell
 python scripts\run_analytics.py
 ```
 
-The command executes the named queries in `sql/kpi_queries.sql` and
-`sql/advanced_analysis.sql`, validates their output contracts, and writes
-reproducible CSVs plus a checksum manifest to `reports/analytics/`. Open
-`notebooks/02_exploratory_analysis.ipynb` to review the presentation layer.
+The loader is transactional and idempotent. It validates processed files,
+replaces managed tables in dependency order, verifies row counts, and runs
+database integrity checks. Analytical SQL outputs include a checksum manifest.
 
-## Current Project Status
+Open the presentation layers after the pipeline completes:
 
-**Phase 5 - end-to-end analytics platform and stakeholder dashboard complete.**
+```powershell
+python -m jupyter lab
+```
 
-The repository includes the source audit, relational contracts, tested cleaning
-pipeline, lineage manifest, normalized PostgreSQL database, transactional
-loader, integrity SQL, documented KPI queries, reproducible analytical extracts,
-exploratory notebook, evidence-based business findings, dashboard-ready source
-workbook, three-page Power BI report, and verified static previews.
+## Quality checks
 
-## Future Improvements
+```powershell
+python -m ruff check src scripts tests
+python -m pytest -q
+```
 
-- add a GitHub Actions workflow for automated tests and linting
-- automate dashboard refresh against a scheduled PostgreSQL extract
-- add contribution-margin analysis if product cost data becomes available
-- publish the Power BI report through a governed workspace when sharing is needed
-- evaluate new customer cohorts as additional observation periods become available
+The repository currently contains **23 passing automated tests**. GitHub Actions
+runs the same lint and test checks for pushes and pull requests to `main`.
+
+## Metric contract
+
+- Delivered GMV is item price on delivered orders; freight is excluded.
+- Delivered AOV is delivered GMV divided by delivered orders.
+- On-time delivery compares calendar dates and ignores time of day.
+- Low reviews are order-level average review scores less than or equal to 2.
+- Repeat customers use `customer_unique_id` and at least two delivered orders.
+- Payment-method order counts are not additive because an order may contain
+  multiple payment records.
+
+See [docs/kpi_definitions.md](docs/kpi_definitions.md) for grain, filters,
+formulas, and interpretation limits.
+
+## Recommended actions
+
+1. Create a daily late-order watchlist using estimated delivery date, carrier
+   handoff, seller, and destination state.
+2. Monitor GMV and order growth beside on-time delivery and low-review rates.
+3. Prioritize operational review in the highest-GMV states and categories.
+4. Test cohort-based post-purchase, replenishment, and service-recovery journeys.
+5. Preserve payment method and installment detail in conversion reporting.
+
+## Analytical boundaries
+
+- The public data does not contain product cost, marketing spend, acquisition
+  cost, or contribution margin.
+- Delivery and review patterns are associations, not causal attribution.
+- Repeat behavior is constrained by the historical observation window.
+- The results should be revalidated before application to a live marketplace.
+
+## Project status
+
+**Portfolio release complete.** The repository includes an immutable-source
+audit, tested cleaning pipeline, normalized PostgreSQL model, transactional
+loader, named SQL analyses, executed notebooks, verified Power BI dashboard,
+business recommendations, interview deck, CI workflow, and privacy safeguards.
+
+Future extensions should be driven by new data—not unnecessary machine
+learning. Contribution-margin analysis would require costs; acquisition and
+retention economics would require marketing and customer-lifecycle inputs.
+
+## License
+
+Code and documentation are available under the [MIT License](LICENSE). The
+Olist dataset remains subject to the terms of its original publisher and is not
+redistributed in this repository.
