@@ -13,3 +13,7 @@
 # Generated notebook previews are deliverables, not source language.
 reports/notebooks/*.html linguist-generated=true
 
+# Reflect the project's authored analytical languages in GitHub statistics.
+*.ipynb linguist-language=Python
+*.sql linguist-detectable=true
+
