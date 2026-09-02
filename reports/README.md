@@ -3,8 +3,8 @@
 This directory contains reproducible outputs created by project pipelines. The
 generated files are intentionally excluded from Git because they can be rebuilt
 from the source data. The two standalone notebook HTML exports in
-`reports/notebooks/` are the exception: they are committed as recruiter-friendly
-previews that do not require Jupyter.
+`reports/notebooks/` are the exception: they are committed as portable previews
+that do not require Jupyter.
 
 Run the data-quality audit from the repository root:
 

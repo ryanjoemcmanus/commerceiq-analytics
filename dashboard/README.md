@@ -73,7 +73,7 @@ The dashboard source tables are intentionally pre-aggregated at different
 business grains. They should remain disconnected unless a relationship is
 explicitly required and its one-to-many cardinality has been validated.
 
-## Portfolio Review
+## Review Options
 
 The PDF export provides a no-installation preview. Use the PBIX for date and
 state filtering, tooltips, cross-highlighting, sorting, and deeper inspection

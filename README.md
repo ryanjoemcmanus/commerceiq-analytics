@@ -52,6 +52,18 @@ forecasts.
 - [Architecture and ERD](docs/architecture.md)
 - [Project walkthrough presentation](presentation/commerceiq-project-walkthrough.pptx)
 
+## Suggested review path
+
+| Time | Start here | What it covers |
+|---:|---|---|
+| 2 minutes | [Dashboard PDF](dashboard/exports/commerceiq_dashboard.pdf) | Headline KPIs, operational patterns, and market concentration |
+| 5 minutes | [Project walkthrough](presentation/commerceiq-project-walkthrough.pptx) | The complete story from raw files to recommendations |
+| 10 minutes | [Executive summary](docs/executive_summary.md) and [architecture](docs/architecture.md) | Business interpretation, data flow, and relational design |
+| Technical review | [Tests](tests/), [SQL](sql/), and [source code](src/) | Validation rules, metric logic, and reusable implementation |
+
+The [documentation index](docs/README.md) connects each decision to its
+definition, implementation, and supporting output.
+
 ## Architecture
 
 ```mermaid
@@ -103,10 +115,10 @@ commerceiq-analytics/
 ├── .github/workflows/       # Automated linting and tests
 ├── dashboard/               # PBIX, theme, source workbook, PDF export
 ├── data/                    # Ignored raw and processed data locations
-├── docs/                    # Model, KPI, findings, and business narrative
+├── docs/                    # Indexed model, KPI, findings, and business narrative
 ├── images/                  # Verified dashboard previews
 ├── notebooks/               # Executed audit and exploratory notebooks
-├── presentation/            # Interview-ready project presentation
+├── presentation/            # Short project walkthrough and speaker notes
 ├── reports/                 # Reproducible quality and analytical evidence
 ├── scripts/                 # Command-line pipeline entry points
 ├── sql/                     # Schema, integrity checks, KPIs, advanced analysis
@@ -204,7 +216,7 @@ formulas, and interpretation limits.
 
 ## Project status
 
-**Portfolio release complete.** The repository includes an immutable-source
+**Release candidate.** The repository includes an immutable-source
 audit, tested cleaning pipeline, normalized PostgreSQL model, transactional
 loader, named SQL analyses, executed notebooks, verified Power BI dashboard,
 business recommendations, project walkthrough, CI workflow, and privacy safeguards.
