@@ -1,5 +1,8 @@
 # CommerceIQ Documentation
 
+> **Independent portfolio project:** Not affiliated with, endorsed by, or
+> created for CommerceIQ, Inc.
+
 This directory connects the business narrative to the metric definitions,
 relational model, transformation rules, and reproducible analytical evidence.
 

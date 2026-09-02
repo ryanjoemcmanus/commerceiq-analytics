@@ -1,6 +1,8 @@
 # Security and Privacy
 
-CommerceIQ is a portfolio analytics project built from the public Olist dataset.
+CommerceIQ is an independent portfolio analytics project built from the public
+Olist dataset. It is not affiliated with, endorsed by, or created for
+CommerceIQ, Inc.
 It must not contain credentials, private customer data, or proprietary business
 information.
 

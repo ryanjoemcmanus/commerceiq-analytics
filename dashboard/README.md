@@ -1,5 +1,8 @@
 # CommerceIQ Power BI Dashboard
 
+> **Independent portfolio project:** Not affiliated with, endorsed by, or
+> created for CommerceIQ, Inc.
+
 This directory contains the stakeholder-facing reporting layer for CommerceIQ.
 The dashboard uses validated aggregate outputs from the PostgreSQL analytics
 pipeline; it does not calculate business metrics directly from the raw Olist

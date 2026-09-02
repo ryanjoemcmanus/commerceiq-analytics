@@ -1,5 +1,8 @@
 # CommerceIQ Project Walkthrough
 
+> **Independent portfolio project:** Not affiliated with, endorsed by, or
+> created for CommerceIQ, Inc.
+
 `commerceiq-project-walkthrough.pptx` is a concise six-slide walkthrough of
 the project. It follows the data from raw files through audit, cleaning,
 PostgreSQL, SQL, Power BI, observed patterns, and practical next steps. The

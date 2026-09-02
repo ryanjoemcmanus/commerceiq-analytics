@@ -1,12 +1,17 @@
 # CommerceIQ: End-to-End E-Commerce Analytics Platform
 
-[![CommerceIQ CI](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml)
+> **Independent portfolio project:** This project is not affiliated with,
+> endorsed by, or created for CommerceIQ, Inc. The name "CommerceIQ" is used
+> solely as the title of this personal analytics project. See the full
+> [affiliation notice](NOTICE.md).
+
+[![CI](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanjoemcmanus/commerceiq-analytics/actions/workflows/ci.yml)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-CommerceIQ is a portfolio-quality analytics platform built from the public
+This independent portfolio project is an analytics platform built from the public
 Brazilian Olist e-commerce dataset. It turns nine related CSV files into a
 tested PostgreSQL model, reproducible SQL analyses, Python exploratory work,
 and a stakeholder-facing Power BI dashboard.
