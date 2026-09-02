@@ -10,3 +10,6 @@
 *.yaml text eol=lf
 *.csv text eol=lf
 
+# Generated notebook previews are deliverables, not source language.
+reports/notebooks/*.html linguist-generated=true
+

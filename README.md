@@ -214,17 +214,6 @@ formulas, and interpretation limits.
 - Repeat behavior is constrained by the historical observation window.
 - The results should be revalidated before application to a live marketplace.
 
-## Project status
-
-**Release candidate.** The repository includes an immutable-source
-audit, tested cleaning pipeline, normalized PostgreSQL model, transactional
-loader, named SQL analyses, executed notebooks, verified Power BI dashboard,
-business recommendations, project walkthrough, CI workflow, and privacy safeguards.
-
-Future extensions should be driven by new data—not unnecessary machine
-learning. Contribution-margin analysis would require costs; acquisition and
-retention economics would require marketing and customer-lifecycle inputs.
-
 ## License
 
 Code and documentation are available under the [MIT License](LICENSE). The
