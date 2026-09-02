@@ -1,16 +1,15 @@
-# CommerceIQ Interview Presentation
+# CommerceIQ Project Walkthrough
 
-`commerceiq-interview-presentation.pptx` is a concise six-slide walkthrough for
-internship and analyst interviews. It is designed for a five-to-seven-minute
-conversation and covers the business problem, governed data pipeline, headline
-KPIs, delivery-experience finding, commercial concentration, recommendations,
-and skills demonstrated.
+`commerceiq-project-walkthrough.pptx` is a concise six-slide walkthrough of
+the project. It follows the data from raw files through audit, cleaning,
+PostgreSQL, SQL, Power BI, observed patterns, and practical next steps. The deck
+is designed for a five-to-seven-minute conversation rather than a formal pitch.
 
 The deck uses only verified outputs from the local PostgreSQL and SQL analytics
 pipeline. Speaker notes include source references and short talking points so
 the presentation can be delivered without reading dense slide text.
 
-Before an interview:
+Before presenting:
 
 1. Open the deck in PowerPoint and confirm fonts and chart rendering.
 2. Rehearse the notes once, emphasizing decisions and business implications.

@@ -50,7 +50,7 @@ forecasts.
 - [Standalone notebook exports](reports/notebooks/)
 - [KPI definitions](docs/kpi_definitions.md)
 - [Architecture and ERD](docs/architecture.md)
-- [Interview presentation](presentation/commerceiq-interview-presentation.pptx)
+- [Project walkthrough presentation](presentation/commerceiq-project-walkthrough.pptx)
 
 ## Architecture
 
@@ -207,7 +207,7 @@ formulas, and interpretation limits.
 **Portfolio release complete.** The repository includes an immutable-source
 audit, tested cleaning pipeline, normalized PostgreSQL model, transactional
 loader, named SQL analyses, executed notebooks, verified Power BI dashboard,
-business recommendations, interview deck, CI workflow, and privacy safeguards.
+business recommendations, project walkthrough, CI workflow, and privacy safeguards.
 
 Future extensions should be driven by new data—not unnecessary machine
 learning. Contribution-margin analysis would require costs; acquisition and
